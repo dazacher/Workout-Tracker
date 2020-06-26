@@ -1,0 +1,19 @@
+language: node_js
+node_js: '12'
+branches:
+  only:
+  - master
+cache:
+  directories:
+  - node_modules
+before_install:
+- npm update
+install:
+- npm install
+git:
+  depth: 100
+deploy:
+  provider: heroku
+  api_key:
+    secure: lay7+srZCtMtqLl9CaJiUrImdDapkL8v2y6wccuukpJn3NLmlIRKBGPGuZYztbZ8vgehPmo9cK0X3rUgUXK9usZ7ngC6eQMhtp7F7ukrLd/A9Kk+9A/vMeNwu7BUYC/mZmlPNO6Zt+MtRUPPXlkIrKp0wYxN8f9jGB2Slq/un+PhXhFVIZser+3eDn3V72+L6zsaGJni3x7tbc38YU/U5Og/V2bgYnXb4bSphqTFXMo53jUStIymRGzulBBewye8NymuGZJeMw0bwJiELrKOtyQlwDrVWawxHCymfebPL39gbMbiiugHJerDLG1SDWLvoZVW5E30i71U88PTVQ0KuLZrmQBdVPqX1AOpTJaahFwimhAO0vG2AJIITsvs6RaVXNvoHurv9Ieur67bB+4dmop1iGwDvklNkTgiCvhXNlsuLZZT+w3AFJgcDsDui6rxBm5QSnaaYMSTTM9TPigSvkZHuurc7dxQEaExrpbD/ENocCaMD/utuBHttuQzf4mIgRPAxr65aCIHYCezzJ7P+fwecU+CJJk3wlrZgw5lCwtdVUOb2ke+XJ9fXgSl6UI2hE9j9tUdXa/TbpvmO+GWGvMuE83KjTPjIhOaNxD/yGXbXrdC8vKuj23g5MU+EHzfVljDtW7CaEQw42e4Wuwfplef3ztgexI4xT5xl0riEIM=
+  app: workout-tracker-das
