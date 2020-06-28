@@ -27,4 +27,25 @@ router.post("/api/workouts", (req, res) => {
         res.json(data);
     });
 });
+
+router.put("/api/workouts/:id", (req, res) => {
+    console.log(req.params.id);
+    console.log(req.body);
+    db.Workout.update({ _id: req.params.id }, {
+        $push: {
+            exercises: req.body
+        }
+    },
+        { new: true },
+        (error, data) => {
+
+            if (error) {
+                console.log(error);
+                res.send(error);
+
+            }
+            console.log(data);
+            res.json(data);
+        });
+});
 module.exports = router;
