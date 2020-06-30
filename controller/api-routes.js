@@ -1,51 +1,58 @@
-const express = require("express");
-const db = require("../models");
-const router = express.Router();
+// const express = require("express");
+const Workout = require("../models/Workout")
+// const db = require("../models");
+const router = require("express").Router();
 
-router.get("/api/workouts", (req, res) => {
-    db.Workout.find({}, (error, data) => {
+router.get("/api/workouts", async (req, res) => {
+    try {
+        const data = await Workout.find({});
 
-        if (error) {
-            console.log(error);
-            res.send(error);
-
-        }
-        console.log(data);
         res.json(data);
-    });
+    } catch (error) {
+        console.log(error);
+        res.send(error);
+    }
 });
 
-router.post("/api/workouts", (req, res) => {
-    db.Workout.create({}, (error, data) => {
+router.post("/api/workouts", async (req, res) => {
+    try {
+        const data = await Workout.create({});
 
-        if (error) {
-            console.log(error);
-            res.send(error);
-
-        }
-        console.log(data);
         res.json(data);
-    });
+
+    } catch (error) {
+        console.log(error);
+        res.json(data);
+    }
+
 });
 
-router.put("/api/workouts/:id", (req, res) => {
+router.put("/api/workouts/:id", async (req, res) => {
     console.log(req.params.id);
     console.log(req.body);
-    db.Workout.update({ _id: req.params.id }, {
-        $push: {
-            exercises: req.body
-        }
-    },
-        { new: true },
-        (error, data) => {
+    try {
 
-            if (error) {
-                console.log(error);
-                res.send(error);
+        const data = await Workout.findByIdAndUpdate({ _id: req.params.id },
+            { $push: { exercises: req.body } }, { new: true });
 
-            }
-            console.log(data);
-            res.json(data);
-        });
+
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+
+        res.send(error);
+    }
 });
+
+router.get("/api/workouts/range", async (req, res) => {
+    try {
+        const data = await Workout.find({});
+
+        res.json(data);
+    } catch (error) {
+        console.log(error);
+        res.send(error);
+    }
+});
+
 module.exports = router;
