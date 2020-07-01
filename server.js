@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const db = require("./models");
+// const db = require("./models");
 const htmlRoute = require("./controller/html-routes");
 const apiRoute = require("./controller/api-routes");
 
