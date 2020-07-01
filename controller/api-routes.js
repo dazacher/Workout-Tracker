@@ -7,6 +7,8 @@ router.get("/api/workouts", async (req, res) => {
     try {
         const data = await Workout.find({});
 
+        // console.log(JSON.stringify(exercises, null, 2));
+
         res.json(data);
     } catch (error) {
         console.log(error);
