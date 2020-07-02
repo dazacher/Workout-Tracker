@@ -28,7 +28,7 @@ const workoutSchema = new Schema(
 );
 
 workoutSchema.virtual("totalDuration").get(function () {
-    
+
     const totalDuration = this.exercises.reduce((count, exercise) => {
         // Copy the object being iterated over
         console.log(exercise.duration);
